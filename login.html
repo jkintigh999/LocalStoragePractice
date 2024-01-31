@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "registerStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <div class = "container">
+        <form id = "form" class = "form">
+            <h2>Login</h2>
+
+            <div class = "form-control">
+                <label for = "email">Email</label>
+                <input type = "text" id = "email" placeholder = "Enter Email">
+                <small>Error Message</small>
+            </div>  
+
+            <div class = "form-control">
+                <label for = "password">Password</label>
+                <input type = "password" id = "password" placeholder = "Enter Password">
+                <small>Error Message</small>
+            </div> 
+
+            <p> <a href="register.html">Not a user? Click here to register</a> </p>
+
+            <button type = "button" onclick="login()">Login</button>
+        
+        </form>
+
+    </div>
+    
+</body>
+
+<script>
+    function login(){
+        let email, password;
+        email=document.getElementById("email").value;
+        password=document.getElementById("password").value;
+
+        let user = new Array();
+        admin =JSON.parse(localStorage.getItem("admin"))?JSON.parse(localStorage.getItem("admin")):[]
+        user =JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+        if(admin.some((v)=>{
+            return v.email==email && v.password==password
+        })){
+            let current_admin=admin.filter((v)=>{
+                return v.email==email && v.password==password
+            })[0]
+
+            alert("Login successful FOR ADMIN!");
+            localStorage.setItem("currentUseermail",current_admin.email);
+            localStorage.setItem("currentUsername","admin");
+            window.location = "admin.html";
+
+        }
+        else if(user.some((v)=>{
+            return v.email==email && v.password==password
+        })){
+            let current_user=user.filter((v)=>{
+                return v.email==email && v.password==password
+            })[0]
+
+            alert("Login successful");
+            localStorage.setItem("currentUseremail",current_user.email);
+            localStorage.setItem("currentUsername",current_user.name);
+            window.location = "homepage.html";
+
+        }
+        else{
+            alert("Login Failed")
+        }
+    }
+
+</script>
+</html>

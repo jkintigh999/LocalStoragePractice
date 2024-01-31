@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Profile Page</title>
+</head>
+<body>
+
+    <div class="container" id="container">
+        <div class="card">
+            <h2>Lottery Purchase System</h2>
+
+            <h3>Welcome</h3>
+            <h3>Name:
+                <script>
+                    document.write(localStorage.getItem("currentUsername"));
+                </script>
+            </h3>
+            <button type = "button" onclick="homePage()">Back To Homepage</button>
+            <br>
+            <h2>Search For A Ticket</h2>
+            <p>Enter Ticket Name</p><input type="text" id="search">
+            <button type = "button" onclick="search()">Confirm Search</button>
+            
+        </div>
+    </div>
+    
+</body>
+
+<script src="search.js">
+</script>
+</html>

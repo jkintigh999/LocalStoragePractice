@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotter Purchase System</title>
+</head>
+<body>
+
+    <button type = "button" onclick="startUp()">Login</button>
+    
+</body>
+
+<script>
+    function startUp(){
+
+        let ticket=new Array();
+        let admin= new Array();
+        ticket=JSON.parse(localStorage.getItem("tickets"))?JSON.parse(localStorage.getItem("tickets")):[]
+        if(ticket.some((v)=>{
+            return v.name=="powerball"
+        })){
+            alert("Duplicate Data");
+            window.location = "login.html";
+        }
+        else{
+            ticket.push({
+            "name":"Powerball",
+            "cost":2.0,
+            "winnings":800,
+            "drawingDate":"Jan 1st, 2024",
+            "winning1":1,
+            "winning2":2,
+            "winning3":3,
+            "winning4":4,
+            "winning5":5
+        })
+            ticket.push({
+                "name":"Mega Millions",
+                "cost":2.0,
+                "winnings":800,
+                "drawingDate":"Jan 1st, 2024",
+                "winning1":1,
+                "winning2":2,
+                "winning3":3,
+                "winning4":4,
+                "winning5":5
+            })
+            ticket.push({
+                "name":"Lotto Texas",
+                "cost":1.0,
+                "winnings":800,
+                "drawingDate":"Jan 1st, 2024",
+                "winning1":1,
+                "winning2":2,
+                "winning3":3,
+                "winning4":4,
+                "winning5":5
+            })
+            ticket.push({
+                "name":"Texas Two Step",
+                "cost":1.5,
+                "winnings":800,
+                "drawingDate":"Jan 1st, 2024",
+                "winning1":1,
+                "winning2":2,
+                "winning3":3,
+                "winning4":4,
+                "winning5":5
+            })
+            admin.push({
+                "email":"admin",
+                "password":"pass"
+            })
+        }
+        localStorage.setItem("tickets",JSON.stringify(ticket));
+        localStorage.setItem("admin",JSON.stringify(admin));
+        
+        window.location = "login.html";
+    }
+
+</script>
+</html>

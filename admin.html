@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Main Page</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h2>Lottery Purchase System</h2>
+
+            <h3>Welcome ADMIN</h3>
+            <h3>Name:
+                <script>
+                    document.write(localStorage.getItem("currentUsername"));
+                </script>
+            </h3>
+            <button type = "button" onclick="logout()">Log Out</button>
+            <br>
+            <button type = "button" onclick="status()">Current Status</button>
+            <br>
+            <button type = "button" onclick="manage()">Manage Tickets</button>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+
+    function logout(){
+        localStorage.removeItem("currentUsername");
+        localStorage.removeItem("currentUseremail");
+        window.location.href="login.html"
+    }
+    function status(){
+        window.location.href="status.html"
+    }
+    function manage(){
+        window.location.href="manage.html"
+    }
+
+</script>
+</html>

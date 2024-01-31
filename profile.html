@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Profile Page</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h2>Lottery Purchase System</h2>
+
+            <h3>Welcome</h3>
+            <h3>Name:
+                <script>
+                    document.write(localStorage.getItem("currentUsername"));
+                </script>
+            </h3>
+            <h3>Email:
+                <script>
+                    document.write(localStorage.getItem("currentUseremail"));
+                </script>
+            </h3>
+            <h3>Phone:
+                <script>
+                    document.write(localStorage.getItem("currentPhone"));
+                </script>
+            </h3>
+            <h3>Address:
+                <script>
+                    document.write(localStorage.getItem("currentAddress"));
+                </script>
+            </h3>
+            <button type = "button" onclick="logout()">Log Out</button>
+            <button type = "button" onclick="homePage()">Back To Homepage</button>
+            
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    window.onload = function(){
+        let name,email,address,phone;
+        let user=new Array();
+        user=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+        console.log(user.length)
+        for(i=0; i<user.length;i++){
+            if(user[i].name == localStorage.getItem("currentUsername")){
+                name = user[i].name;
+                email = user[i].email;
+                phone = user[i].phone;
+                address = user[i].address;
+
+            }
+        }
+        localStorage.setItem("currentAddress",address);
+        localStorage.setItem("currentPhone",phone);
+        console.log(name+email+phone+address); 
+    }
+    function logout(){
+        localStorage.removeItem("currentUsername");
+        localStorage.removeItem("currentUseremail");
+        localStorage.removeItem("currentAddress");
+        localStorage.removeItem("currentPhone");
+        window.location.href="login.html"
+    }
+    function homePage(){
+        window.location.href="homepage.html"
+    }
+
+</script>
+</html>
